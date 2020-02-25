@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Description = ({description}) => {
+const Description = ({task}) => {
     return (
         <div className="description">
-            {description.map(e=><p>{e.des}</p>)}
+            {task.name}
 
         </div>
     );
