@@ -1,34 +1,69 @@
-import React, {useState} from 'react';
-// import Terminal from "./Terminal";
-// import ReactTerm from "./ReactTerm";
+import React, {Component} from 'react';
 import Description from "./Description";
 import Term2 from "./Term2";
+import Animation from "./Animation";
 
-
-const GitGame = () => {
-
-    const [currentTask, setCurrentTask] = useState(0);
-    const [tasks, setTasks] = useState([{
-        id: 1, name: 'lesson 1', des: 'Wykonaj zadanie 1'
+const gameSettings = [
+    {
+        id: 1,
+        name: 'Zadanie 1',
+        des: 'Stwórz swoje repozytorium.\n Sprawdź status.',
+        commands:{
+            'git-status': () => 'On branch master.\nNothing to commit.',
+            'git-init': () => 'Create an empty Git repository or reinitialize an existing one.'
+        }
     },
-        {
-            id: 2, name: 'lesson 2', des: 'Wykonaj zadanie 2'
-        }]);
+    {
+        id: 2,
+        name: 'Zadanie 2',
+        des: 'Dodaj plik index.html.\nDodaj plik style.css.\nDodaj plik app.js.',
+        commands:{
+            'git-add_index.html': () => 'Add index.html to the index.',
+            'git-add_style.css': () => 'Add style.css to the index.',
+            'git-add_app.js': () => 'Add app.js to the index.',
+        }
+    },
+    {
+        id: 3,
+        name: 'Zadanie 3',
+        des: 'Zrób commita (bez komentarza xD).\nDodaj pliki do zdalnego repozytorium.',
+        commands:{
+            'git-commit': () => 'Record changes to the repository',
+            'git-push': () => 'Update remote refs along with associated objects.',
+        }
+    }
+];
 
-    const handleChangTask =(i)=> {
-        setCurrentTask(i)
+class GitGame extends Component {
+    constructor(props) {
+        super(props);
+        this.state= {
+            currentTask: 0,
+            tasks: gameSettings
+        };
+    }
+
+
+    handleChangTask =(i)=> {
+        this.setState({
+            currentTask: (i)
+        });
     };
 
-    return (
-        <div className="gitgame">
 
-            {/*<Terminal message={['>git add .', '>git commit -m']}/>*/}
-            <Description task={tasks[currentTask]}/>
-            {/*<ReactTerm />*/}
-            <Term2 />
-            {tasks.map((e,i)=><a href='#' id={e.id} onClick={()=>handleChangTask(i)}>{e.name}</a>)}
-        </div>
-    );
-};
+    render() {
+        console.log(this.state.currentTask);
+        return (
+            <>
+                <Animation />
+                <div className="gitgame">
+                    <Description task={{...this.state.tasks[this.state.currentTask]}}/>
+                    <Term2 task={{...this.state.tasks[this.state.currentTask]}}/>
+                    {this.state.tasks.map((e, i) => <a href='#' key={e.id} onClick={() => this.handleChangTask(i)}>{e.name}</a>)}
+            </div>
+            </>
+        );
+    }
+}
 
 export default GitGame;

@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Description = ({task}) => {
+    console.log(task);
     return (
         <div className="description">
-            {task.name}
-
+            <h2>{task.name}</h2>
+            <p>{task.des}</p>
         </div>
     );
 };

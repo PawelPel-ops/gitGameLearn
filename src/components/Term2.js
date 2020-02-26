@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import Terminal from 'terminal-in-react';
 
 class Term2 extends Component {
-    showMsg = () => 'Hello World';
-    showMsg1 = () => 'On branch master.\nNothing to commit.';
-    showMsg2 = () => 'Fatal: unable to access.'
+    constructor(props) {
+        super(props);
+        this.state ={
+            currentTask: this.props.task
+        }
+    }
+
+    static getDerivedStateFromProps (nextProps){
+        return {
+            currentTask: nextProps,
+        }
+
+    }
 
     render() {
+        console.log(this.state.currentTask.task.commands);
         return (
             <div
                 style={{
-                    // display: "flex",
-                    // justifyContent: "center",
-                    // alignItems: "center",
-                    // height: "20vh",
                     width: "40vw"
                 }}
             >
@@ -22,21 +29,10 @@ class Term2 extends Component {
                     backgroundColor='#1e1e1e'
                     barColor='#1e1e1e'
                     style={{ fontWeight: "bold", fontSize: "1em" }}
-                    commands={{
-                        'open-google': () => window.open('https://www.google.com/', '_blank'),
-                        showmsg: this.showMsg,
-                        popup: () => alert('Terminal in React'),
-                        'git_status': this.showMsg1,
-                        'git_push': this.showMsg2
-                    }}
+                    commands={this.state.currentTask.task.commands}
                     descriptions={{
-                        'open-google': 'opens google.com',
-                        showmsg: 'shows a message',
-                        alert: 'alert', popup: 'alert',
-                        'git_status': 'command git status',
-                        'git_push': 'command git push'
+                        'git': 'command git status',
                     }}
-
                 />
             </div>
         );

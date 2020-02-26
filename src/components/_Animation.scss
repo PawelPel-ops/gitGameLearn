@@ -1,0 +1,41 @@
+.animation {
+  background-color: #3e3e3e;
+  color: #79a9a9;
+  height: 200px;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  .repo {
+    height: 200px;
+    width: 300px;
+    background-color: lightgoldenrodyellow;
+    border: 1px solid darkgray;
+    padding: 10px;
+    font-size: 18px;
+    p{
+      padding: 10px;
+    }
+  }
+  .head {
+    p {
+      color: red;
+      display: block;
+    }
+  }
+  .stage {
+    p {
+      color: green;
+      display: block;
+    }
+  }
+  .local {
+    p {
+      display: block;
+    }
+  }
+  .origin {
+    p {
+      display: block;
+    }
+  }
+}
