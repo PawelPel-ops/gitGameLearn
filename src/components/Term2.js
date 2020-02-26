@@ -5,7 +5,8 @@ class Term2 extends Component {
     constructor(props) {
         super(props);
         this.state ={
-            currentTask: this.props.task
+            currentTask: this.props.task,
+            terminalVisible: false
         }
     }
 
@@ -17,14 +18,15 @@ class Term2 extends Component {
     }
 
     render() {
-        console.log(this.state.currentTask.task.commands);
+
         return (
             <div
                 style={{
                     width: "40vw"
                 }}
             >
-                <Terminal
+                <button onClick={()=> this.setState({terminalVisible: true})}>Pokaz terminal</button>
+                {this.state.terminalVisible? <Terminal
                     color='#79a9a9'
                     backgroundColor='#1e1e1e'
                     barColor='#1e1e1e'
@@ -33,7 +35,7 @@ class Term2 extends Component {
                     descriptions={{
                         'git': 'command git status',
                     }}
-                />
+                />:"Kliknij w guzik"}
             </div>
         );
     }

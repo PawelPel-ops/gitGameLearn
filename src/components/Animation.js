@@ -12,10 +12,10 @@ const js = <FontAwesomeIcon icon={faJs} size="lg" />;
 const Animation = () => {
     return (
         <div className="animation">
-            <div className="repo head"><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
-            <div className="repo stage"><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
-            <div className="repo local"><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
-            <div className="repo origin"><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
+            <div className="repo head"><h3>Head</h3><hr /><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
+            <div className="repo stage"><h3>Stage</h3><hr /><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
+            <div className="repo local"><h3>Local</h3><hr /><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
+            <div className="repo origin"><h3>Origin</h3><hr /><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
         </div>
     );
 };

@@ -1,59 +1,79 @@
-import React, {useState} from 'react';
+import React, {Component} from 'react';
 
+class Terminal extends Component {
+    state = {
+        userInput: '',
+        history: [],
+        taskEnd: false,
+        task2End: false,
+        // message: [],
+        currentTask: this.props.task
+    };
 
-const Terminal = ({message}) => {
-    // const [command, setCommand] = useState(">");
-    // const [history, addToHistory] = useState([]);
-    // const [firstTask, setFirstTask] = useState(false);
-    // let replay = "";
-    //
-    // const handleKeyPress = (event) => {
-    //     if(event.key === 'Enter') {
-    //         event.preventDefault();
-    //
-    //
-    //
-    //         if (command === message[0]) {
-    //            replay = '>Correct first task';
-    //            setFirstTask(true);
-    //         } else {
-    //            replay = '>Uncorrect';
-    //         }
-    //
-    //
-    //         if (command === message[1] && firstTask === true) {
-    //             replay = '>Correct second task';
-    //         } else {
-    //             replay = '>Uncorrect';
-    //         }
-    //         addToHistory(prevState => [...prevState, command, replay]);
-    //
-    //     }
-    //
-    //
-    // };
-    //
-    // const handleValue = (e) => {
-    //
-    //     setCommand(e.target.value);
-    //
-    // };
+    handleKeyPress = e => {
+        if(e.keyCode === 13) {
+            this.setState(
+                {
+                    history: [...this.state.history, this.state.userInput]
+                },
+                ()=> {
+                    if (this.state.userInput === this.state.currentTask.commands[0]) {
+                this.setState({
+                    taskEnd: true,
+                    history: [...this.state.history, 'On branch master. Nothing to commit.']
+                })
+                } else {
+                        this.setState({
+                            history: [...this.state.history, `${this.state.userInput} is not a git command.`]
+                        })
+                    }
+                if (this.state.userInput === this.state.currentTask.commands[1] && this.state.taskEnd === true) {
+                    this.setState({
+                        task2End: true,
+                        history: [...this.state.history, 'Add index.html to the Stage.']
+                    })
+                }
 
+            }
+        );
+    }
 
-
-    return (
-
-        <div>
-
-        </div>
-        // <div>
-        //     <form className="formTerminal">
-        //         {history.map((e, i)=><p key={i}>{e}</p>)}
-        //
-        //         <input id="butt" className="inputTerminal" type="text" value={command} onChange={handleValue} onKeyDown={handleKeyPress}/>
-        //     </form>
-        // </div>
-    );
 };
 
+    // static getDerivedStateFromProps (nextProps){
+    //     return {
+    //         currentTask: nextProps,
+    //     }
+    //
+    // }
+
+    // handleReset=()=>{
+    //     this.setState({
+    //         history: [],
+    //     })
+    // };
+render () {
+
+    // if (this.state.task2End === true)  {
+    //     return <button onClick={this.handleReset}>Zbierz punkty</button>
+    // }
+    return (
+        <div>
+            <h3>Terminal</h3>
+            <div className="formTerminal">
+
+                {this.state.history.map((e,i)=>{
+                    return <span key={i}>{e}<br /></span>
+                })}
+
+                {/*{this.state.message.map(e=>{*/}
+                {/*    return <span>{e}<br /></span>*/}
+                {/*})}*/}
+
+                <input id="butt" className="inputTerminal" type="text" onChange={e=>this.setState({userInput: e.target.value})} onKeyDown={this.handleKeyPress}/>
+            </div>
+        </div>
+    );
+};
+}
 export default Terminal;

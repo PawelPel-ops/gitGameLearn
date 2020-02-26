@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Description = ({task}) => {
-    console.log(task);
     return (
         <div className="description">
             <h2>{task.name}</h2>
