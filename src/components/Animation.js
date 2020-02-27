@@ -9,16 +9,29 @@ const file = <FontAwesomeIcon icon={faFileCode} size="lg"/>;
 const css = <FontAwesomeIcon icon={faCss3} size="lg" />;
 const js = <FontAwesomeIcon icon={faJs} size="lg" />;
 
-const Animation = ({animation, animationCSS, animationJS}) => {
+const Animation = ({animationHead, animationIndexUntracked, animationCSSUntracked, animationJSUntracked, animationIndexStage, animationCSSStage, animationJSStage, animationIndexLocal, animationCSSLocal, animationJSLocal,animationIndexOrigin, animationCSSOrigin, animationJSOrigin}) => {
     return (
         <div className="animation">
-            <div className="repo head"><h3>Head</h3><hr />
-                <p className={animation ? 'indexVis' : 'indexNon'}>{file} index.html</p>
-                <p className={animationCSS ? 'cssVis' : 'cssNon'}>{css} style.css</p>
-                <p className={animationJS ? 'jsVis' : 'jsNon'}>{js} app.js</p></div>
-            <div className="repo stage"><h3>Stage</h3><hr /><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
-            <div className="repo local"><h3>Local</h3><hr /><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
-            <div className="repo origin"><h3>Origin</h3><hr /><p>{file} index.html</p><p>{css} style.css</p><p>{js} app.js</p></div>
+            <div className="repo head"><h3 className={animationHead ? 'vis' : 'non'}>Untracked</h3><hr />
+                <p className={animationIndexUntracked ? 'vis' : 'non'}>{file} index.html</p>
+                <p className={animationCSSUntracked ? 'vis' : 'non'}>{css} style.css</p>
+                <p className={animationJSUntracked ? 'vis' : 'non'}>{js} app.js</p>
+            </div>
+            <div className="repo stage"><h3 className={animationHead ? 'vis' : 'non'}>Stage</h3><hr />
+                <p className={animationIndexStage ? 'vis' : 'non'}>{file} index.html</p>
+                <p className={animationCSSStage ? 'vis' : 'non'}>{css} style.css</p>
+                <p className={animationJSStage ? 'vis' : 'non'}>{js} app.js</p>
+            </div>
+            <div className="repo local"><h3 className={animationHead ? 'vis' : 'non'}>Local</h3><hr />
+                <p className={animationIndexLocal ? 'vis' : 'non'}>{file} index.html</p>
+                <p className={animationCSSLocal ? 'vis' : 'non'}>{css} style.css</p>
+                <p className={animationJSLocal ? 'vis' : 'non'}>{js} app.js</p>
+            </div>
+            <div className="repo origin"><h3 className={animationHead ? 'vis' : 'non'}>Origin</h3><hr />
+                <p className={animationIndexOrigin ? 'vis' : 'non'}>{file} index.html</p>
+                <p className={animationCSSOrigin ? 'vis' : 'non'}>{css} style.css</p>
+                <p className={animationJSOrigin ? 'vis' : 'non'}>{js} app.js</p>
+            </div>
         </div>
     );
 };

@@ -12,6 +12,12 @@
     border: 1px solid darkgray;
     padding: 10px;
     font-size: 18px;
+    .vis {
+      display: block;
+    }
+    .non {
+      display: none;
+    }
     p{
       padding: 10px;
     }
@@ -21,39 +27,21 @@
       color: red;
       display: none;
     }
-    .indexVis {
-      display: block;
-    }
-    .indexNon {
-      display: none;
-    }
-    .cssVis {
-      display: block;
-    }
-    .cssNon {
-      display: none;
-    }
-    .jsVis {
-      display: block;
-    }
-    .jsNon {
-      display: none;
-    }
   }
   .stage {
     p {
       color: green;
-      display: block;
+      display: none;
     }
   }
   .local {
     p {
-      display: block;
+      display: none;
     }
   }
   .origin {
     p {
-      display: block;
+      display: none;
     }
   }
 }
