@@ -10,13 +10,19 @@ const gameSettings = [
         des: 'Stwórz swoje pierwsze repozytorium. Służy do tego komenda git init.\nNastępnie korzystając z komendy edytora Nano stwórz plik index.html.\nSprawdź status swojego repozytorium',
         commands:['git init', 'nano index.html', 'git status'],
         response: ['Odp na git init.', 'Juz użyłeś git init. Drugie repozytorium nie jest nam potrzebne.', 'Odp na nano', 'Już stworzyłeś plik index.html. Jeden wystarczy.', 'On branch master. Untracked files: index.html.', 'On branch master'],
+        taskEnd: false,
+        task2End: false,
+        task3End: false
     },
     {
         id: 2,
         name: 'Zadanie 2',
         des: 'Masz już repozytorium z pierwszym plikiem. Dodaj pliki style.css i app.js.\nSprawdź status swojego repozytorium.\nDodaj plik index.html do Stage wykorzystując komende git add.',
         commands:['nano style.css', 'nano app.js', 'git status', 'git add index.html'],
-        response: ['Stworzenie style.css', 'Jeden plik style.css wystarczy.', 'stworzenie app.js', 'Jeden plik app.js wystarczy.', 'On branch master. Untracked files: index.html. style.css app.js', 'On branch master. Untracked files: index.html. style.css', 'Added index.html', 'juz dodales index.html', 'On branch master. Untracked files: style.css app.js']
+        response: ['Stworzenie style.css', 'Jeden plik style.css wystarczy.', 'stworzenie app.js', 'Jeden plik app.js wystarczy.', 'On branch master. Untracked files: index.html. style.css app.js', 'On branch master. Untracked files: index.html. style.css', 'Added index.html', 'juz dodales index.html', 'On branch master. Untracked files: style.css app.js'],
+        taskEnd: false,
+        task2End: false,
+        task3End: false
 
     }
     // {
@@ -65,8 +71,31 @@ class GitGame extends Component {
     };
 
 
-    render() {
+    handleChangeTask=()=> {
+        let tempTasks = [...this.state.tasks];
+        tempTasks[this.state.currentTask].taskEnd = true;
+        this.setState({
+            tasks:tempTasks
+        })
+    };
+    handleChangeTask2=()=> {
+        let tempTasks = [...this.state.tasks];
+        tempTasks[this.state.currentTask].task2End = true;
+        this.setState({
+            tasks:tempTasks
+        })
+    };
+    handleChangeTask3=()=> {
+        let tempTasks = [...this.state.tasks];
+        tempTasks[this.state.currentTask].task3End = true;
+        this.setState({
+            tasks:tempTasks
+        })
+    };
 
+
+    render() {
+console.log({...this.state.tasks[this.state.currentTask]}.taskEnd);
         return (
             <>
 
@@ -87,7 +116,12 @@ class GitGame extends Component {
                         animationHead={this.state.animationHead}
                     />
                     <Description task={{...this.state.tasks[this.state.currentTask]}} />
-                    <Terminal task={{...this.state.tasks[this.state.currentTask]}} animationChange={this.handleAnimation}/>
+                    <Terminal task={{...this.state.tasks[this.state.currentTask]}}
+                              animationChange={this.handleAnimation}
+                              taskChange={this.handleChangeTask}
+                              task2Change={this.handleChangeTask2}
+                              task3Change={this.handleChangeTask3}
+                    />
                     <div>
                         {this.state.tasks.map((e, i) => <a href='#' key={e.id} onClick={() => this.handleChangTask(i)}><h3>{e.name}</h3></a>)}
                     </div>

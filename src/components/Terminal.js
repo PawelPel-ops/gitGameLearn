@@ -6,9 +6,9 @@ class Terminal extends Component {
         this.state = {
             userInput: '',
             history: [],
-            taskEnd: false,
-            task2End: false,
-            task3End: false,
+            // taskEnd: false,
+            // task2End: false,
+            // task3End: false,
             currentTask: this.props.task,
             wrongCommand: 'Błędna lub niewłaściwa komenda.',
         };
@@ -29,9 +29,10 @@ class Terminal extends Component {
 
                 ()=> {
                     //sprawdzanie czy pierwsza komenda jest poprawnie wpisana
-                           if (this.state.userInput === this.state.currentTask.task.commands[0] && this.state.taskEnd === false) {
+                           if (this.state.userInput === this.state.currentTask.task.commands[0] && this.state.currentTask.task.taskEnd === false) {
+                               this.props.taskChange();
                                this.setState({
-                                   taskEnd: true,
+
                                    history: [...this.state.history, this.state.currentTask.task.response[0]],
                                    userInput: ''
                                });
@@ -50,16 +51,17 @@ class Terminal extends Component {
                                 })
                             }
                             //sprawdzanie czy pierwsza komenda zostala wpisana drugi raz
-                            if (this.state.userInput === this.state.currentTask.task.commands[0] && this.state.taskEnd === true) {
+                            if (this.state.userInput === this.state.currentTask.task.commands[0] && this.state.currentTask.task.taskEnd === true) {
                                 this.setState({
                                     history: [...this.state.history, this.state.currentTask.task.response[1]],
                                     userInput: ''
                                 })
                             }
                             //sprawdzanie czy druga komenda jest poprawnie wpisana
-                            if (this.state.userInput === this.state.currentTask.task.commands[1] && this.state.taskEnd === true && this.state.task2End === false) {
+                            if (this.state.userInput === this.state.currentTask.task.commands[1] && this.state.currentTask.task.taskEnd === true && this.state.currentTask.task.task2End === false) {
+                                this.props.task2Change();
                                 this.setState({
-                                    task2End: true,
+                                    // task2End: true,
                                     history: [...this.state.history, this.state.currentTask.task.response[2]],
                                     userInput: ''
                                 });
@@ -72,30 +74,31 @@ class Terminal extends Component {
                                 }
                             }
                             //sprawdzanie czy druga komenda jest wpisana drugi raz
-                            if (this.state.userInput === this.state.currentTask.task.commands[1] && this.state.task2End === true) {
+                            if (this.state.userInput === this.state.currentTask.task.commands[1] && this.state.currentTask.task.task2End === true) {
                                 this.setState({
                                     history: [...this.state.history, this.state.currentTask.task.response[3]],
                                     userInput: ''
                             })
                             }
                             //sprawdzanie czy trzecia komenda(git status) jest poprawnie wpisana i na koncu zadania
-                            if (this.state.userInput === this.state.currentTask.task.commands[2] && this.state.taskEnd === true && this.state.task2End === true) {
+                            if (this.state.userInput === this.state.currentTask.task.commands[2] && this.state.currentTask.task.taskEnd === true && this.state.currentTask.task.task2End === true) {
                                 this.setState({
                                 history: [...this.state.history, this.state.currentTask.task.response[4]],
                                 userInput: ''
                             });
                             }
                             //sprawdzanie czy trzecia komenda (git status) jest wpisana po wykonaniu pierwszego etapu, a przed drugim
-                            if (this.state.userInput === this.state.currentTask.task.commands[2] && this.state.taskEnd === true && this.state.task2End === false) {
+                            if (this.state.userInput === this.state.currentTask.task.commands[2] && this.state.currentTask.task.taskEnd === true && this.state.currentTask.task.task2End === false) {
                                 this.setState({
                                 history: [...this.state.history, this.state.currentTask.task.response[5]],
                                 userInput: ''
                              });
                             }
                             //sprawdzanie czy czwarta komenda jest wpisana poprawnie
-                            if (this.state.userInput === this.state.currentTask.task.commands[3] && this.state.taskEnd === true && this.state.task2End === true) {
+                            if (this.state.userInput === this.state.currentTask.task.commands[3] && this.state.currentTask.task.taskEnd === true && this.state.currentTask.task.task2End === true) {
+                                this.props.task3Change();
                                 this.setState({
-                                    task3End: true,
+                                    // task3End: true,
                                     history: [...this.state.history, this.state.currentTask.task.response[6]],
                                     userInput: ''
                             });
@@ -105,14 +108,14 @@ class Terminal extends Component {
                                 }
                             }
                             //sprawdzanie czy czwarta komenda jest wpisana drugi raz
-                            if (this.state.userInput === this.state.currentTask.task.commands[3] && this.state.taskEnd === true && this.state.task2End === true && this.state.task3End === true) {
+                            if (this.state.userInput === this.state.currentTask.task.commands[3] && this.state.currentTask.task.taskEnd === true && this.state.currentTask.task.task2End === true && this.state.currentTask.task.task3End === true) {
                                 this.setState({
                                     history: [...this.state.history, this.state.currentTask.task.response[7]],
                                     userInput: ''
                             });
                             }
                             //sprawdzanie czy czwarta komenda jest wpisana poprawnie
-                            if (this.state.userInput === this.state.currentTask.task.commands[3] && this.state.taskEnd === true && this.state.task2End === true && this.state.task3End === true ) {
+                            if (this.state.userInput === this.state.currentTask.task.commands[3] && this.state.currentTask.task.taskEnd === true && this.state.currentTask.task.task2End === true && this.state.currentTask.task.task3End === true ) {
                                 this.setState({
                                 history: [...this.state.history, this.state.currentTask.task.response[8]],
                                 userInput: ''
@@ -138,6 +141,7 @@ class Terminal extends Component {
         }
 
     }
+
 
 
 render () {
