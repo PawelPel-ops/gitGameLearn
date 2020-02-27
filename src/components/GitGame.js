@@ -8,13 +8,15 @@ const gameSettings = [
         id: 1,
         name: 'Zadanie 1',
         des: 'Stwórz swoje repozytorium.\n Sprawdź status.',
-        commands:['git status', 'git init']
+        commands:['git status', 'git add index.html'],
+        response: ['On branch master. Nothing to commit.', 'On branch master. Untracked files: index.html', 'Add index.html to the Stage.']
     },
     {
         id: 2,
         name: 'Zadanie 2',
         des: 'Dodaj plik index.html.\nDodaj plik style.css.\nDodaj plik app.js.',
-        commands:['git add index.html', 'git add style.css']
+        commands:['git status', 'git add index.html'],
+        response: ['Task2', 'Task2', 'Task2']
 
     }
     // {
@@ -33,7 +35,8 @@ class GitGame extends Component {
         super(props);
         this.state= {
             currentTask: 0,
-            tasks: gameSettings
+            tasks: gameSettings,
+            animation: false
         };
     }
 
@@ -43,16 +46,21 @@ class GitGame extends Component {
             currentTask: (i)
         });
     };
-
+    handleAnimation =()=>{
+        this.setState(
+            {animation: true}
+        );
+    };
 
     render() {
 
         return (
             <>
-                <Animation />
+
                 <div className="gitgame">
-                    <Description task={{...this.state.tasks[this.state.currentTask]}}/>
-                    <Terminal task={{...this.state.tasks[this.state.currentTask]}}/>
+                    <Animation />
+                    <Description task={{...this.state.tasks[this.state.currentTask]}} animation={this.state.animation}/>
+                    <Terminal task={{...this.state.tasks[this.state.currentTask]}} animationChange={this.handleAnimation}/>
                     {/*<Term2 task={{...this.state.tasks[this.state.currentTask]}}/>*/}
                     <div>
                         {this.state.tasks.map((e, i) => <a href='#' key={e.id} onClick={() => this.handleChangTask(i)}><h3>{e.name}</h3></a>)}

@@ -1,51 +1,73 @@
 import React, {Component} from 'react';
 
 class Terminal extends Component {
-    state = {
-        userInput: '',
-        history: [],
-        taskEnd: false,
-        task2End: false,
-        // message: [],
-        currentTask: this.props.task
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            userInput: '',
+            history: [],
+            taskEnd: false,
+            task2End: false,
+            currentTask: this.props.task,
+            wrongCommand: 'Wrong command',
+            terminalVisible: false
+        };
+    }
+
 
     handleKeyPress = e => {
         if(e.keyCode === 13) {
+            this.props.animationChange();
             this.setState(
                 {
-                    history: [...this.state.history, this.state.userInput]
+                    history: [...this.state.history, this.state.userInput],
+                    userInput: ''
+
                 },
                 ()=> {
-                    if (this.state.userInput === this.state.currentTask.commands[0]) {
+                    if (this.state.userInput === this.state.currentTask.task.commands[0] && this.state.taskEnd === false) {
                 this.setState({
-                    taskEnd: true,
-                    history: [...this.state.history, 'On branch master. Nothing to commit.']
+                    history: [...this.state.history, this.state.currentTask.task.response[1]],
+                    userInput: ''
                 })
                 } else {
                         this.setState({
-                            history: [...this.state.history, `${this.state.userInput} is not a git command.`]
+                            history: [...this.state.history, this.state.wrongCommand],
+                            userInput: ''
                         })
                     }
-                if (this.state.userInput === this.state.currentTask.commands[1] && this.state.taskEnd === true) {
+                if (this.state.userInput === this.state.currentTask.task.commands[1] && this.state.taskEnd === false) {
                     this.setState({
-                        task2End: true,
-                        history: [...this.state.history, 'Add index.html to the Stage.']
+                        taskEnd: true,
+                        history: [...this.state.history, this.state.currentTask.task.response[2]],
+                        userInput: ''
                     })
                 }
-
+                if (this.state.userInput === this.state.currentTask.task.commands[0] && this.state.taskEnd === true) {
+                    this.setState({
+                        history: [...this.state.history, this.state.currentTask.task.response[0]],
+                        userInput: ''
+                    })
+                }
+                if (this.state.userInput === 'clear') {
+                    console.log('ala ma kota');
+                    this.setState({
+                        history: [],
+                        userInput: ''
+                    })
+                }
             }
         );
     }
 
 };
 
-    // static getDerivedStateFromProps (nextProps){
-    //     return {
-    //         currentTask: nextProps,
-    //     }
-    //
-    // }
+    static getDerivedStateFromProps (nextProps){
+        return {
+            currentTask: nextProps,
+        }
+
+    }
 
     // handleReset=()=>{
     //     this.setState({
@@ -60,18 +82,18 @@ render () {
     return (
         <div>
             <h3>Terminal</h3>
-            <div className="formTerminal">
 
-                {this.state.history.map((e,i)=>{
-                    return <span key={i}>{e}<br /></span>
-                })}
 
-                {/*{this.state.message.map(e=>{*/}
-                {/*    return <span>{e}<br /></span>*/}
-                {/*})}*/}
+                <div className="formTerminal">
 
-                <input id="butt" className="inputTerminal" type="text" onChange={e=>this.setState({userInput: e.target.value})} onKeyDown={this.handleKeyPress}/>
-            </div>
+                    {this.state.history.map((e,i)=>{
+                        return <span key={i} className="terminalResponse">{e}<br /></span>
+                    })}
+
+                    <input id="butt" className="inputTerminal" type="text" value={this.state.userInput} onChange={e=>this.setState({userInput: e.target.value})} onKeyDown={this.handleKeyPress}/>
+                </div>
+
+
         </div>
     );
 };
