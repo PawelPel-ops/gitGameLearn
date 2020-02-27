@@ -9,7 +9,7 @@ const gameSettings = [
         name: 'Zadanie 1',
         des: 'Stwórz swoje repozytorium.\n Sprawdź status.',
         commands:['git status', 'git add index.html'],
-        response: ['On branch master. Nothing to commit.', 'On branch master. Untracked files: index.html', 'Add index.html to the Stage.']
+        response: ['On branch master. Nothing to commit.', 'On branch master. Untracked files: index.html', 'Add index.html to the Stage.'],
     },
     {
         id: 2,
@@ -36,7 +36,9 @@ class GitGame extends Component {
         this.state= {
             currentTask: 0,
             tasks: gameSettings,
-            animation: false
+            animation: false,
+            animationCSS: false,
+            animationJS: false
         };
     }
 
@@ -46,11 +48,21 @@ class GitGame extends Component {
             currentTask: (i)
         });
     };
-    handleAnimation =()=>{
+    handleAnimationIndex =()=>{
         this.setState(
             {animation: true}
         );
     };
+    // handleAnimationCSS =()=>{
+    //     this.setState(
+    //         {animationCSS: true}
+    //     );
+    // };
+    // handleAnimationJS =()=>{
+    //     this.setState(
+    //         {animationJS: true}
+    //     );
+    // };
 
     render() {
 
@@ -58,10 +70,9 @@ class GitGame extends Component {
             <>
 
                 <div className="gitgame">
-                    <Animation />
-                    <Description task={{...this.state.tasks[this.state.currentTask]}} animation={this.state.animation}/>
-                    <Terminal task={{...this.state.tasks[this.state.currentTask]}} animationChange={this.handleAnimation}/>
-                    {/*<Term2 task={{...this.state.tasks[this.state.currentTask]}}/>*/}
+                    <Animation animation={this.state.animation}/>
+                    <Description task={{...this.state.tasks[this.state.currentTask]}} />
+                    <Terminal task={{...this.state.tasks[this.state.currentTask]}} animationIndexChange={this.handleAnimationIndex}/>
                     <div>
                         {this.state.tasks.map((e, i) => <a href='#' key={e.id} onClick={() => this.handleChangTask(i)}><h3>{e.name}</h3></a>)}
                     </div>

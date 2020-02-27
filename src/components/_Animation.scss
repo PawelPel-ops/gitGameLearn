@@ -19,7 +19,25 @@
   .head {
     p {
       color: red;
+      display: none;
+    }
+    .indexVis {
       display: block;
+    }
+    .indexNon {
+      display: none;
+    }
+    .cssVis {
+      display: block;
+    }
+    .cssNon {
+      display: none;
+    }
+    .jsVis {
+      display: block;
+    }
+    .jsNon {
+      display: none;
     }
   }
   .stage {

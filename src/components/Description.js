@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Description = ({task, animation}) => {
-    console.log(animation);
+const Description = ({task}) => {
+
     return (
         <div className="description">
-            <h2 className={animation ? 'block' : 'none'}>{task.name}</h2>
+            <h2>{task.name}</h2>
             <p>{task.des}</p>
         </div>
     );
