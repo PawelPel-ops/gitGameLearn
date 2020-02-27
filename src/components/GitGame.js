@@ -8,8 +8,12 @@ const gameSettings = [
         id: 1,
         name: 'Zadanie 1',
         des: 'Stwórz swoje pierwsze repozytorium. Służy do tego komenda git init.\nNastępnie korzystając z komendy edytora Nano stwórz plik index.html.\nSprawdź status swojego repozytorium',
-        commands:['git init', 'nano index.html', 'git status'],
-        response: ['Odp na git init.', 'Juz użyłeś git init. Drugie repozytorium nie jest nam potrzebne.', 'Odp na nano', 'Już stworzyłeś plik index.html. Jeden wystarczy.', 'On branch master. Untracked files: index.html.', 'On branch master'],
+        commands:['git status' ,'git init', 'nano index.html'],
+        response: [
+            ['On branch master', 'On branch master', 'On branch master. Untracked files: index.html.'],
+            ['Odp na git init.', 'Juz użyłeś git init. Drugie repozytorium nie jest nam potrzebne.'],
+            ['Odp na nano', 'Już stworzyłeś plik index.html. Jeden wystarczy.'],
+        ],
         taskEnd: false,
         task2End: false,
         task3End: false
@@ -18,8 +22,13 @@ const gameSettings = [
         id: 2,
         name: 'Zadanie 2',
         des: 'Masz już repozytorium z pierwszym plikiem. Dodaj pliki style.css i app.js.\nSprawdź status swojego repozytorium.\nDodaj plik index.html do Stage wykorzystując komende git add.',
-        commands:['nano style.css', 'nano app.js', 'git status', 'git add index.html'],
-        response: ['Stworzenie style.css', 'Jeden plik style.css wystarczy.', 'stworzenie app.js', 'Jeden plik app.js wystarczy.', 'On branch master. Untracked files: index.html. style.css app.js', 'On branch master. Untracked files: index.html. style.css', 'Added index.html', 'juz dodales index.html', 'On branch master. Untracked files: style.css app.js'],
+        commands:['git status', 'nano style.css', 'nano app.js', 'git add index.html'],
+        response: [
+            ['On branch master. Untracked files: index.html', 'On branch master. Untracked files: index.html. style.css', 'On branch master. Untracked files: index.html style.css app.js', 'On branch master. Untracked files: style.css app.js a index po ADD'],
+            ['Stworzenie style.css', 'Jeden plik style.css wystarczy.'],
+            ['stworzenie app.js', 'Jeden plik app.js wystarczy.'],
+            ['Added index.html', 'juz dodales index.html']
+        ],
         taskEnd: false,
         task2End: false,
         task3End: false
@@ -29,8 +38,12 @@ const gameSettings = [
         id: 3,
         name: 'Zadanie 3',
         des: 'Nie musisz dodawać pojedyńczo plików, możesz dodać wszystkie pliki, które są w Untracked. Zrób to wykorzystując komendę git add .\nAby dodac swoje pliki do Local wykonaj commita, użyj komendy git commit -m "komentarz". Komentarz powinien opisywać jakie zmiany wprowdziłes, ale dla celów dydaktyczny wpisz "komentarz". ',
-        commands:['git add .', 'git commit -m "komentarz"', 'git status'],
-        response: ['Dodanie style.css i app.js do Stage.', 'style.css i app.js sa juz w Stage.', 'zrobienie commita', 'zrobiles juz commita', 'odp na git status'],
+        commands:['git status', 'git add .', 'git commit -m "komentarz"'],
+        response: [
+            ['On branch master. Untracked files: style.css app.js a index po ADD', 'On branch master. Wszystko w add, musisz zrobic commita', 'po commicie'],
+            ['Dodanie style.css i app.js do Stage.', 'style.css i app.js sa juz w Stage.'],
+            ['zrobienie commita', 'zrobiles juz commita']
+        ],
         taskEnd: false,
         task2End: false,
         task3End: false
@@ -39,13 +52,17 @@ const gameSettings = [
         id: 4,
         name: 'Zadanie 4',
         des: 'Musisz dokonac zmian i edytowac plik index.html. Wykorzystaj komendy nano nazwa_pliku.\nPo dokonaniu zmian w pliku musisz zrobi commita i przeslac pliki na Lokalne repozytorium. Pamietaj, ze musisz uzyc dwoch komend. W miedzy czasie mozesz sprawdzic status plikow.',
-        commands:['nano index.html', 'git add index.html', 'git commit -m "komentarz"', 'git status'],
-        response: ['Edytowanie index.html', 'Juz edytowales index.html', 'GIT ADD', 'juz zrobiles GIT ADD', 'odp git status - to zrobienia jeszcze commit', 'odp git status - do zrobienia add', 'COMMIT', 'Po co drugi COMMIT?', 'odp git status - wszystko OK'],
+        commands:['git status', 'nano index.html', 'git add index.html', 'git commit -m "komentarz"'],
+        response: [
+            ['On branch master.', 'odp git status - do zrobienia add', 'odp git status - to zrobienia jeszcze commit', 'git gut'],
+            ['Edytowanie index.html', 'Juz edytowales index.html'],
+            ['GIT ADD', 'juz zrobiles GIT ADD'],
+            ['COMMIT', 'Po co drugi COMMIT?']
+        ],
         taskEnd: false,
         task2End: false,
         task3End: false
     }
-
 ];
 
 class GitGame extends Component {
