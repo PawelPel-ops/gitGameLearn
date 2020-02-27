@@ -43,6 +43,17 @@ class Terminal extends Component {
                                if (this.state.currentTask.task.id === 2) {
                                    this.props.animationChange("CSS","Untracked");
                                }
+                               if (this.state.currentTask.task.id === 3) {
+                                   this.props.animationChange("CSS","Untracked");
+                                   this.props.animationChange("JS","Untracked");
+                                   this.props.animationChange("CSS","Stage");
+                                   this.props.animationChange("JS","Stage");
+                               }
+                               if (this.state.currentTask.task.id === 4) {
+                                   this.props.animationChange("Index","Local");
+                                   this.props.animationChange("Index","Untracked");
+                               }
+
                            } else {
                                //reagowanie na bledna komende
                                 this.setState({
@@ -71,6 +82,18 @@ class Terminal extends Component {
                                 }
                                 if (this.state.currentTask.task.id === 2) {
                                     this.props.animationChange("JS","Untracked");
+                                }
+                                if (this.state.currentTask.task.id === 3) {
+                                    this.props.animationChange("Index","Stage");
+                                    this.props.animationChange("CSS","Stage");
+                                    this.props.animationChange("JS","Stage");
+                                    this.props.animationChange("Index","Local");
+                                    this.props.animationChange("CSS","Local");
+                                    this.props.animationChange("JS","Local");
+                                }
+                                if (this.state.currentTask.task.id === 4) {
+                                    this.props.animationChange("Index","Stage");
+                                    this.props.animationChange("Index","Untracked");
                                 }
                             }
                             //sprawdzanie czy druga komenda jest wpisana drugi raz
@@ -106,6 +129,10 @@ class Terminal extends Component {
                                     this.props.animationChange("Index","Untracked");
                                     this.props.animationChange("Index","Stage");
                                 }
+                                if (this.state.currentTask.task.id === 4) {
+                                    this.props.animationChange("Index","Stage");
+                                    this.props.animationChange("Index","Local");
+                                }
                             }
                             //sprawdzanie czy czwarta komenda jest wpisana drugi raz
                             if (this.state.userInput === this.state.currentTask.task.commands[3] && this.state.currentTask.task.taskEnd === true && this.state.currentTask.task.task2End === true && this.state.currentTask.task.task3End === true) {
@@ -114,7 +141,7 @@ class Terminal extends Component {
                                     userInput: ''
                             });
                             }
-                            //sprawdzanie czy czwarta komenda jest wpisana poprawnie
+                            //sprawdzanie czy czwarta komenda jest wpisana poprawnie (git status dla ostatniej komendy)
                             if (this.state.userInput === this.state.currentTask.task.commands[3] && this.state.currentTask.task.taskEnd === true && this.state.currentTask.task.task2End === true && this.state.currentTask.task.task3End === true ) {
                                 this.setState({
                                 history: [...this.state.history, this.state.currentTask.task.response[8]],

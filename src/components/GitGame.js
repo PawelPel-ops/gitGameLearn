@@ -24,16 +24,28 @@ const gameSettings = [
         task2End: false,
         task3End: false
 
+    },
+    {
+        id: 3,
+        name: 'Zadanie 3',
+        des: 'Nie musisz dodawać pojedyńczo plików, możesz dodać wszystkie pliki, które są w Untracked. Zrób to wykorzystując komendę git add .\nAby dodac swoje pliki do Local wykonaj commita, użyj komendy git commit -m "komentarz". Komentarz powinien opisywać jakie zmiany wprowdziłes, ale dla celów dydaktyczny wpisz "komentarz". ',
+        commands:['git add .', 'git commit -m "komentarz"', 'git status'],
+        response: ['Dodanie style.css i app.js do Stage.', 'style.css i app.js sa juz w Stage.', 'zrobienie commita', 'zrobiles juz commita', 'odp na git status'],
+        taskEnd: false,
+        task2End: false,
+        task3End: false
+    },
+    {
+        id: 4,
+        name: 'Zadanie 4',
+        des: 'Musisz dokonac zmian i edytowac plik index.html. Wykorzystaj komendy nano nazwa_pliku.\nPo dokonaniu zmian w pliku musisz zrobi commita i przeslac pliki na Lokalne repozytorium. Pamietaj, ze musisz uzyc dwoch komend. W miedzy czasie mozesz sprawdzic status plikow.',
+        commands:['nano index.html', 'git add index.html', 'git commit -m "komentarz"', 'git status'],
+        response: ['Edytowanie index.html', 'Juz edytowales index.html', 'GIT ADD', 'juz zrobiles GIT ADD', 'odp git status - to zrobienia jeszcze commit', 'odp git status - do zrobienia add', 'COMMIT', 'Po co drugi COMMIT?', 'odp git status - wszystko OK'],
+        taskEnd: false,
+        task2End: false,
+        task3End: false
     }
-    // {
-    //     id: 3,
-    //     name: 'Zadanie 3',
-    //     des: 'Zrób commita (bez komentarza xD).\nDodaj pliki do zdalnego repozytorium.',
-    //     commands:{
-    //         'git-commit': () => 'Record changes to the repository',
-    //         'git-push': () => 'Update remote refs along with associated objects.',
-    //     }
-    // }
+
 ];
 
 class GitGame extends Component {
