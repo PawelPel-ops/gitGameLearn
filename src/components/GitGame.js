@@ -97,7 +97,7 @@ class GitGame extends Component {
             animationJSLocal: false,
             animationIndexOrigin: false,
             animationCSSOrigin: false,
-            animationJSOrigin: false
+            animationJSOrigin: false,
         };
     }
 
@@ -137,6 +137,8 @@ class GitGame extends Component {
     };
 
 
+
+
     render() {
 
         return (
@@ -166,7 +168,7 @@ class GitGame extends Component {
                               task3Change={this.handleChangeTask3}
                     />
                     <div>
-                        {this.state.tasks.map((e, i) => <a href='#' key={e.id} onClick={() => this.handleChangTask(i)}><h3>{e.name}</h3></a>)}
+                        {this.state.tasks.map((e, i) => <a href='#' key={e.id} onClick={() => this.handleChangTask(i)} ><h3>{e.name}</h3></a>)}
                     </div>
                 </div>
             </>

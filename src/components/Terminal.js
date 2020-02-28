@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 
+
 class Terminal extends Component {
     constructor(props) {
         super(props);
         this.state = {
             userInput: '',
             history: [],
-            // taskEnd: false,
-            // task2End: false,
-            // task3End: false,
             currentTask: this.props.task,
             wrongCommand: 'Błędna lub niewłaściwa komenda.',
+
         };
     }
 
@@ -189,8 +188,8 @@ render () {
                     })}
 
                     <input id="butt" className="inputTerminal" type="text" maxLength="80" value={this.state.userInput} onChange={e=>this.setState({userInput: e.target.value})} onKeyDown={this.handleKeyPress}/>
-                </div>
 
+                </div>
 
         </div>
     );
