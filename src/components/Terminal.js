@@ -80,6 +80,11 @@ class Terminal extends Component {
                             this.props.animationChange("Index","Local");
                             this.props.animationChange("Index","Untracked");
                         }
+                        if (this.state.currentTask.task.id === 5) {
+                            this.props.animationChange("Index","Origin");
+                            this.props.animationChange("CSS","Origin");
+                            this.props.animationChange("JS","Origin");
+                        }
                     }
 
                     //sprawdzanie czy pierwsza komenda zostala wpisana drugi raz
@@ -173,7 +178,7 @@ render () {
 
 
     return (
-        <div>
+        <div className="boxTerminal">
             <h3>Terminal</h3>
 
 
@@ -183,7 +188,7 @@ render () {
                         return <span key={i} className="terminalResponse">${e}<br /></span>
                     })}
 
-                    <input id="butt" className="inputTerminal" type="text" value={this.state.userInput} onChange={e=>this.setState({userInput: e.target.value})} onKeyDown={this.handleKeyPress}/>
+                    <input id="butt" className="inputTerminal" type="text" maxLength="80" value={this.state.userInput} onChange={e=>this.setState({userInput: e.target.value})} onKeyDown={this.handleKeyPress}/>
                 </div>
 
 

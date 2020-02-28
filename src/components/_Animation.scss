@@ -21,11 +21,43 @@
     p{
       padding: 10px;
     }
+    .question {
+      position: relative;
+      top: 0;
+      left: 5px;
+      display: inline;
+      .hidden {
+        border: 1px solid darkgray;
+        border-radius: 10px;
+        background-color: #3e3e3e;
+        color: #79a9a9;
+        position: absolute;
+        padding: 10px;
+        display: none;
+      }
+      .visUntracked {
+        display: inline;
+      }
+      .visStage {
+        display: inline;
+      }
+      .visLocal {
+        display: inline;
+      }
+      .visOrigin {
+        display: inline;
+      }
+      .non {
+        display: none;
+      }
+    }
+
   }
   .head {
     p {
       color: red;
       display: none;
+      float: left;
     }
   }
   .stage {

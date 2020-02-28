@@ -62,6 +62,20 @@ const gameSettings = [
         taskEnd: false,
         task2End: false,
         task3End: false
+    },
+    {
+        id: 5,
+        name: 'Zadanie 5',
+        des: 'Wszystkie twoje pliki znajdują się w lokalnym repozytorium. Kolejnym etapem twojego zadania bedzie przesłanie wszystkich plików na Origin. Służy do tego komenda git push origin master.\nJesli wykonujesz pusha kolejny raz wystarczy komenda git push, ale teraz jest to twoj pierwszy push.',
+        commands:['git status', 'git push origin master'],
+        response: [
+            ['On branch master. przed PUSH', 'On branch master. Po PUSH'],
+            ['zrobienie pusha', 'po pushu'],
+
+        ],
+        taskEnd: false,
+        task2End: false,
+        task3End: false
     }
 ];
 
@@ -124,7 +138,7 @@ class GitGame extends Component {
 
 
     render() {
-console.log({...this.state.tasks[this.state.currentTask]}.taskEnd);
+
         return (
             <>
 
